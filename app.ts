@@ -30,21 +30,63 @@
 
 // console.log(cachorro);
 
-enum produtoStatus{
-    
-}
-function checarProdutoStatus(status:number){
-    switch(status){
-        case 1:
-            console.log("Produto Disponível")
-            break;
-        case 2:
-            console.log("Produto Não Encontrado");
-            break;
-        case 3:
-            console.log("Produto aguardando estoque");
-            break;
-    }
+// enum produtoStatus{
+//     Ativo = 1,
+//     Inativo = 2,
+//     Indisponível = 3
+// }
+// function checarProdutoStatus(status:number){
+//     switch(status){
+//         case produtoStatus.Ativo:
+//             console.log("Produto Disponível")
+//             break;
+//         case produtoStatus.Inativo:
+//             console.log("Produto Não Encontrado");
+//             break;
+//         case produtoStatus.Indisponível:
+//             console.log("Produto aguardando estoque");
+//             break;
+//     }
+// }
+
+// checarProdutoStatus(produtoStatus.Ativo);
+
+
+interface IAnimal{
+    nome: string;
+    idade:number;
+    vivo: boolean;
+
+    nascer(): void
+
+    crescer():void
+
+    morrer():void
 }
 
-checarProdutoStatus(2);
+let cachorro: IAnimal ={
+    nome: "Rex",
+    idade: 0,
+    vivo: false,
+    
+    nascer() {
+        this.vivo = true;
+
+        return(`O ${this.nome} nasceu!!`)
+    },
+
+    crescer(){
+        this.idade++;
+        return console.log(`O ${this.nome} cresceu! Ele está com ${this.idade} anos`)
+    },
+    morrer() {
+        this.vivo = false;
+        this.idade = 0;
+        return console.log(`O ${this.nome} morreu`)
+    },
+}
+
+cachorro.nascer()
+cachorro.crescer()
+cachorro.crescer()
+cachorro.morrer()
