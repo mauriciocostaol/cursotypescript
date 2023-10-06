@@ -64,29 +64,48 @@ interface IAnimal{
     morrer():void
 }
 
-let cachorro: IAnimal ={
-    nome: "Rex",
-    idade: 0,
-    vivo: false,
-    
+
+
+class Animal implements IAnimal{
+    readonly nome: string;
+    idade:number;
+    vivo:boolean;
+
+    constructor(nome:string,){
+        this.nome = nome;
+        this.idade = 0
+        this.vivo = false;
+    }
     nascer() {
         this.vivo = true;
 
         return(`O ${this.nome} nasceu!!`)
-    },
+    };
 
     crescer(){
         this.idade++;
         return console.log(`O ${this.nome} cresceu! Ele está com ${this.idade} anos`)
-    },
+    };
     morrer() {
         this.vivo = false;
         this.idade = 0;
         return console.log(`O ${this.nome} morreu`)
-    },
+    };
+    
 }
 
-cachorro.nascer()
-cachorro.crescer()
-cachorro.crescer()
-cachorro.morrer()
+let cachorro = new Animal("Rex");
+
+cachorro.nascer();
+cachorro.crescer();
+cachorro.morrer();
+
+let gato = new Animal("Stray");
+
+gato.nascer();
+gato.crescer();
+gato.morrer();
+
+
+
+console.log(cachorro.nome);
